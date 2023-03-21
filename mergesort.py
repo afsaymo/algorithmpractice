@@ -7,7 +7,7 @@ Created by Adrianna
 Use merge sort to sort arry
 takes in one array
 """
-import numpy as np
+
 
 test = [8, 2, 5, 3, 4, 7, 6, 1]
 

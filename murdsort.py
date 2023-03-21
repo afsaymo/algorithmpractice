@@ -10,31 +10,20 @@ def murdsort(array):
         array (_type_): _description_
     """
     length = len(array)
-    middle = int(length/2)
-    # base case length <=1
-    if length < 1:
-        return
+    middle = int(length//2)
     
+    # base case length <=1
+    if length == 1:
+        return array
+    
+    # recursion
     left = array[:middle]
     right= array[middle:]
-    j = 0
-
-    for i in range(len(array)-1):
-        if i<middle:
-            left[i] = array[i]
-        else:
-            right[j]=array[i]
-            j+=1
-
+    
     murdsort(left)
     murdsort(right)
-    murds(left,right,array)
+    return murds(left,right,array)
     
-
-
-    print(left)
-    print(right)
-
 def murds(left, right, og):
     """given the left array, right array, and original array
     we sort and copy the left and right into the orignal array
@@ -44,27 +33,33 @@ def murds(left, right, og):
         right (_type_): _description_
         og (_type_): _description_
     """
-    size = int(len(og))
-    ltsize = size /2 
-    rtsize = size - ltsize
-    l = 0
-    r = 0
+    ltsize = len(left)
+    rtsize = len(right)
+    l = 0 # left index
+    r = 0 # right index
+    o = 0 # og index
 
+    # merge left and right
     while(l<ltsize and r<rtsize):
         if(left[l]<right[r]):
-            og.append(left[l])
+            og[o] = left[l]
             l += 1
-        else:
-            og.append(right[r])
             o += 1
-            l += 1
-    # adding leftovers 
-    while(l<ltsize):
-        og.append(left[l])
-        l +=1
-    while(r<rtsize):
-        og.append(right[r])
-        r +=1    
+        else:
+            og[o] = right[r]
+            r += 1
+            o += 1
+    
+    # add the leftovers
+    while l < len(left):
+        og[o] = left[l]
+        l += 1
+        o += 1
+    while r < len(right):
+        og[o] = right[r]
+        r += 1
+        o += 1
+        
+    return og
 
-
-murdsort(test_array)
+print(murdsort(test_array))
