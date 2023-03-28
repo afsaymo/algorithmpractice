@@ -7,7 +7,7 @@ def murdsort(array):
     """given an array, we will sort it  using a merge sort
 
     Args:
-        array (_type_): _description_
+        array: list to be sorted
     """
     length = len(array)
     middle = int(length//2)
@@ -30,9 +30,9 @@ def murds(left, right, og):
     we sort and copy the left and right into the orignal array
 
     Args:
-        left (_type_): _description_
-        right (_type_): _description_
-        og (_type_): _description_
+        left (list): left half of array
+        right (list): right half of array
+        og (list): original array to append sorted numbers 
     """
     ltsize = len(left)
     rtsize = len(right)
