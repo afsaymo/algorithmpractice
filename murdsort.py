@@ -20,6 +20,7 @@ def murdsort(array):
     left = array[:middle]
     right= array[middle:]
     
+    #merge sort the left side, the right side, and then merge them together
     murdsort(left)
     murdsort(right)
     return murds(left,right,array)
